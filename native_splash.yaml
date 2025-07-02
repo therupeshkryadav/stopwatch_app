@@ -1,7 +1,17 @@
 flutter_native_splash:
-  color: "#ffffff"                      # Background color
-  image: assets/splash.png             # Path to splash image
-  branding: assets/branding.png        # Optional
+  # General settings (for iOS and Android < 12)
+  color: "#ffffff"  # Background color
+  image: assets/images/splash.png
+  branding: assets/images/branding.png
+
+  # Android settings
   android: true
   ios: true
   web: false
+
+  # Android 12-specific settings
+  android_12:
+    color: "#ffffff"
+    image: assets/images/splash.png
+    icon_background_color: "#ffffff"
+    branding: assets/images/branding.png
