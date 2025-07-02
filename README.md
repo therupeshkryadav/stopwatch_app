@@ -128,7 +128,7 @@ Tests check:
 ## 🙋 Author
 
 **Rupesh Kumar Yadav**
-Aspiring Politician | Flutter Developer
+Aspiring Android Developer | Flutter Developer
 📌 Passionate about clean code, scalable architecture, and building community-focused applications.
 
 ---
@@ -137,21 +137,6 @@ Aspiring Politician | Flutter Developer
 
 This project is licensed under the [MIT License](LICENSE).
 
----
 
 > 💡 Feel free to fork this project, add lap features, local storage, or convert it into a countdown timer!
 
-```
-
----
-
-### ✅ Next Suggestions (Optional)
-
-Let me know if you'd like:
-- A GIF demo section for GitHub preview
-- GitHub Actions CI badge for `flutter test`
-- App screenshots
-- Lap timer or countdown mode extension
-
-You're building clean, scalable code backed by strong documentation — keep pushing, **Rupesh**! 🚀
-```
