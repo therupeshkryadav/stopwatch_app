@@ -8,10 +8,12 @@ class StopwatchController extends ChangeNotifier {
 
   int get milliseconds => _model.milliseconds;
   bool get isRunning => _model.isRunning;
+  bool get hasStarted => _model.hasStarted;
 
   void start() {
     if (_model.isRunning) return;
     _model.isRunning = true;
+    _model.hasStarted = true;
     _timer = Timer.periodic(Duration(milliseconds: 10), (_) {
       _model.milliseconds += 10;
       notifyListeners();
@@ -19,7 +21,7 @@ class StopwatchController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void stop() {
+  void pause() {
     _model.isRunning = false;
     _timer?.cancel();
     notifyListeners();
@@ -28,8 +30,8 @@ class StopwatchController extends ChangeNotifier {
   void reset() {
     _model.isRunning = false;
     _model.milliseconds = 0;
+    _model.hasStarted = false;
     _timer?.cancel();
     notifyListeners();
   }
 }
-

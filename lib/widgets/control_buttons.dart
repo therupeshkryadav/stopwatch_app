@@ -9,17 +9,31 @@ class ControlButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = context.watch<StopwatchController>();
 
+    String primaryLabel;
+    VoidCallback primaryAction;
+
+    if (!controller.hasStarted) {
+      primaryLabel = 'Start';
+      primaryAction = controller.start;
+    } else if (controller.isRunning) {
+      primaryLabel = 'Pause';
+      primaryAction = controller.pause;
+    } else {
+      primaryLabel = 'Resume';
+      primaryAction = controller.start;
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          onPressed: controller.isRunning ? controller.stop : controller.start,
-          child: Text(controller.isRunning ? 'Pause' : 'Start'),
+          onPressed: primaryAction,
+          child: Text(primaryLabel),
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         ElevatedButton(
           onPressed: controller.reset,
-          child: Text('Reset'),
+          child: const Text('Reset'),
         ),
       ],
     );

@@ -18,7 +18,8 @@ String formatTime(int milliseconds) {
     final controller = context.watch<StopwatchController>();
 
     return Scaffold(
-      appBar: AppBar(title: Text('MVC Stopwatch')),
+      appBar: AppBar(title: Text('MVC Stopwatch'),backgroundColor: Colors.white,),
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

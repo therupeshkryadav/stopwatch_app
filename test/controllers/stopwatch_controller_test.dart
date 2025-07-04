@@ -19,9 +19,9 @@ void main() {
       expect(controller.isRunning, true);
     });
 
-    test('Stop method sets isRunning to false', () {
+    test('Pause method sets isRunning to false', () {
       controller.start();
-      controller.stop();
+      controller.pause();
       expect(controller.isRunning, false);
     });
 
@@ -39,9 +39,9 @@ void main() {
 
       // Allow enough time for multiple ticks of the 10ms interval
       await Future.delayed(Duration(milliseconds: 600));
-      controller.stop();
+      controller.pause();
 
-      print("Elapsed milliseconds: ${controller.milliseconds}");
+      // print("Elapsed milliseconds: ${controller.milliseconds}");
 
       // Loosened condition to avoid test flakiness due to test timer imprecision
       expect(controller.milliseconds >= 300, true,
