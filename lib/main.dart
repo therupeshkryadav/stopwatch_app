@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Stopwatch MVC',
+      title: 'Stopwatch App',
       debugShowCheckedModeBanner: false,
       home: StopwatchScreen(),
     );
