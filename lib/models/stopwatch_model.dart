@@ -1,4 +1,5 @@
 class StopwatchModel {
-  int seconds = 0;
+  int milliseconds = 0;
   bool isRunning = false;
 }
+

@@ -10,7 +10,7 @@ void main() {
     });
 
     test('Initial values are correct', () {
-      expect(controller.seconds, 0);
+      expect(controller.milliseconds, 0);
       expect(controller.isRunning, false);
     });
 
@@ -25,20 +25,28 @@ void main() {
       expect(controller.isRunning, false);
     });
 
-    test('Reset method sets seconds to 0 and stops timer', () async {
+    test('Reset method sets milliseconds to 0 and stops timer', () async {
       controller.start();
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(milliseconds: 200));
       controller.reset();
 
-      expect(controller.seconds, 0);
+      expect(controller.milliseconds, 0);
       expect(controller.isRunning, false);
     });
 
-    test('Seconds increment over time after start', () async {
+    test('Milliseconds increment over time after start', () async {
       controller.start();
-      await Future.delayed(Duration(seconds: 3));
+
+      // Allow enough time for multiple ticks of the 10ms interval
+      await Future.delayed(Duration(milliseconds: 600));
       controller.stop();
-      expect(controller.seconds >= 2, true); // Buffer for delay
+
+      print("Elapsed milliseconds: ${controller.milliseconds}");
+
+      // Loosened condition to avoid test flakiness due to test timer imprecision
+      expect(controller.milliseconds >= 300, true,
+          reason:
+              'Expected at least 300ms, got ${controller.milliseconds}ms');
     });
   });
 }

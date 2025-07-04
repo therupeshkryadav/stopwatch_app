@@ -6,14 +6,14 @@ class StopwatchController extends ChangeNotifier {
   final StopwatchModel _model = StopwatchModel();
   Timer? _timer;
 
-  int get seconds => _model.seconds;
+  int get milliseconds => _model.milliseconds;
   bool get isRunning => _model.isRunning;
 
   void start() {
     if (_model.isRunning) return;
     _model.isRunning = true;
-    _timer = Timer.periodic(Duration(seconds: 1), (_) {
-      _model.seconds++;
+    _timer = Timer.periodic(Duration(milliseconds: 10), (_) {
+      _model.milliseconds += 10;
       notifyListeners();
     });
     notifyListeners();
@@ -27,8 +27,9 @@ class StopwatchController extends ChangeNotifier {
 
   void reset() {
     _model.isRunning = false;
-    _model.seconds = 0;
+    _model.milliseconds = 0;
     _timer?.cancel();
     notifyListeners();
   }
 }
+

@@ -6,11 +6,12 @@ import '../widgets/control_buttons.dart';
 class StopwatchScreen extends StatelessWidget {
   const StopwatchScreen({super.key});
 
-  String formatTime(int seconds) {
-    final minutes = (seconds ~/ 60).toString().padLeft(2, '0');
-    final secs = (seconds % 60).toString().padLeft(2, '0');
-    return "$minutes:$secs";
-  }
+String formatTime(int milliseconds) {
+  final minutes = (milliseconds ~/ 60000).toString().padLeft(2, '0');
+  final seconds = ((milliseconds % 60000) ~/ 1000).toString().padLeft(2, '0');
+  final ms = ((milliseconds % 1000) ~/ 10).toString().padLeft(2, '0'); // two digits
+  return "$minutes:$seconds:$ms";
+}
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,9 @@ class StopwatchScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              formatTime(controller.seconds),
-              style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-            ),
+            Text(formatTime(controller.milliseconds),
+                style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                ),
             SizedBox(height: 40),
             ControlButtons()
           ],
